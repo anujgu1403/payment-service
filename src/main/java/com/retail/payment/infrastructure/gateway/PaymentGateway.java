@@ -1,9 +1,9 @@
 
 package com.retail.payment.infrastructure.gateway;
 
-import com.retail.payment.application.model.Payment;
+import com.retail.payment.domain.model.PaymentModel;
 
 public interface PaymentGateway {
-    PaymentResult process(Payment request);
+    PaymentResult process(PaymentModel paymentModel);
     Method getSupportedMethod();
 }

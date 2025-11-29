@@ -1,9 +1,9 @@
-
 package com.retail.payment.infrastructure.repository;
 
-import com.retail.payment.infrastructure.entity.PaymentEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface PaymentRepository extends JpaRepository<PaymentEntity, Long> { }
+import com.retail.payment.domain.model.PaymentModel;
+
+public interface PaymentRepository {
+    PaymentModel processPayment(PaymentModel paymentModel);
+    PaymentModel getPayment(Long id);
+}

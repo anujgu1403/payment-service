@@ -1,14 +1,14 @@
 
 package com.retail.payment.infrastructure.gateway;
 
-import com.retail.payment.application.model.Payment;
+import com.retail.payment.domain.model.PaymentModel;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GiftCardGateway implements PaymentGateway {
 
     @Override
-    public PaymentResult process(Payment request) {
+    public PaymentResult process(PaymentModel request) {
         var payload = request.getPayload();
         if (payload == null || payload.get("giftCode") == null) return PaymentResult.error("Missing giftCode");
         String code = payload.get("giftCode");

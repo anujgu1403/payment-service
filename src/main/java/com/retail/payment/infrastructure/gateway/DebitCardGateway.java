@@ -1,7 +1,7 @@
 
 package com.retail.payment.infrastructure.gateway;
 
-import com.retail.payment.application.model.Payment;
+import com.retail.payment.domain.model.PaymentModel;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class DebitCardGateway implements PaymentGateway {
 
     @Override
-    public PaymentResult process(Payment request) {
+    public PaymentResult process(PaymentModel request) {
         var payload = request.getPayload();
         if (payload == null || payload.get("pin") == null) return PaymentResult.error("Missing pin for debit card");
         BigDecimal a = request.getAmount();

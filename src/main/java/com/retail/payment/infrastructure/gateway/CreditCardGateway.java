@@ -1,7 +1,7 @@
 
 package com.retail.payment.infrastructure.gateway;
 
-import com.retail.payment.application.model.Payment;
+import com.retail.payment.domain.model.PaymentModel;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ public class CreditCardGateway implements PaymentGateway {
     private final Random rnd = new Random();
 
     @Override
-    public PaymentResult process(Payment request) {
+    public PaymentResult process(PaymentModel request) {
         BigDecimal a = request.getAmount();
         if (a == null) return PaymentResult.error("Missing amount");
         if (a.compareTo(BigDecimal.valueOf(1000)) > 0) return PaymentResult.declined("Amount exceeds limit for credit card");
