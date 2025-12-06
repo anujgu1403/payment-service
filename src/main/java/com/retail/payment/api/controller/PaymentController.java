@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 public interface PaymentController {
 
-    @PostMapping
+    @PostMapping("/payments")
     ResponseEntity<Payment> process(@RequestBody Payment request);
 
     @GetMapping("/{id}")
