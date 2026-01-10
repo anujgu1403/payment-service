@@ -2,6 +2,7 @@ package com.retail.payment.api.controller;
 
 import com.retail.payment.application.service.PaymentService;
 import com.retail.payment.application.model.Payment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("payments")
 public class PaymentControllerImpl implements PaymentController{
 
-    private final PaymentService paymentService;
-
-    public PaymentControllerImpl(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
+    @Autowired
+    private PaymentService paymentService;
 
     public ResponseEntity<Payment> process(@RequestBody Payment request) {
         return ResponseEntity.ok(paymentService.processPayment(request));
